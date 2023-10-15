@@ -8,13 +8,6 @@ public abstract class SystemsManager extends OpMode {
     protected ClawCore claw;
     protected SlideCore slide;
 
-    protected boolean pBumperLeft;
-    protected boolean pBumperRight;
-
-    // Stores previous states of listed buttons
-    private boolean pgamepad_dpad_up = false;
-    private boolean pgamepad_dpad_down = false;
-
     @Override
     public void init() {
         // Define classes
@@ -47,17 +40,17 @@ public abstract class SystemsManager extends OpMode {
         switch (controllerNum) {
             case 1:
                 // Open/close claw if A/B is pressed (respectively)
-                if (gamepad1.left_bumper) {
+                if (gamepad1.a) {
                     claw.open();
-                } else if (gamepad1.right_bumper) {
+                } else if (gamepad1.b) {
                     claw.close();
                 }
                 break;
             case 2:
                 // Open/close claw if A/B is pressed (respectively)
-                if (gamepad2.left_bumper) {
+                if (gamepad2.a) {
                     claw.open();
-                } else if (gamepad2.right_bumper) {
+                } else if (gamepad2.b) {
                     claw.close();
                 }
                 break;
