@@ -8,7 +8,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 /*** Manages the drivetrain of the robot. */
 public class DrivetrainCore {
     /* Initialization */
-    /** Initialization is done within ClawCore for ease of access. */
+    /** Initialization is done within DrivetrainCore for ease of access. */
     private DcMotor leftMotor;
     private DcMotor rightMotor;
 
