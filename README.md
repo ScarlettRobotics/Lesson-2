@@ -11,23 +11,32 @@
 > (Hence each T-Shirt will have its own properties)
 
 ```mermaid
+---
+title: Object Shirt Example
+---
 classDiagram
-
-not for
-class Shirt{
-String colour;
-String size;
-
-changeColour();
-changeSize();
-
+    
+  note for Shirt "Property: colour of shirt\nProperty: size of shirt\n Behaviour: can change the colour\nBehaviour: can change the size"
+  class Shirt{
+  String colour;
+  String size;
+  
+  changeColour();
+  changeSize();
 }
 ```
 
 For Example:
 ```java 
 public class Shirt(){
+    // 
+    String colour = "White";
+    String size = "Medium";
     
-    public Shirt(){}
+    
+    public Shirt(String colour, String size){
+        this.colour = colour;
+        this.colour = size;
+    }
 }
 ```
