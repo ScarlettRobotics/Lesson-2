@@ -45,7 +45,7 @@ public class ClawCore {
 
     /** Telemetry in contained in each class for ease of access. */
     public void telemetry(Telemetry telemetry) {
-        telemetry.addData("\nCURRENT CLASS", "ClawCore.java");
+        telemetry.addData("\nCurrent class", "ClawCore.java");
         telemetry.addData("Claw Right POS:", rightClaw.getPosition());
         telemetry.addData("Claw Left POS:", leftClaw.getPosition());
         telemetry.addData("clawIsOpen", clawIsOpen);
