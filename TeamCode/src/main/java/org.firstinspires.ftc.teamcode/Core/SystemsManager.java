@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 public abstract class SystemsManager extends OpMode {
     // Initialize claw and slide classes
-    protected DualMotorDrive drive;
+    protected DrivetrainCore drive;
     protected ClawCore claw;
     protected SlideCore slide;
 
@@ -18,7 +18,7 @@ public abstract class SystemsManager extends OpMode {
     @Override
     public void init() {
         // Define classes
-        drive = new DualMotorDrive(hardwareMap);
+        drive = new DrivetrainCore(hardwareMap);
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);
         // Telemetry
@@ -65,7 +65,8 @@ public abstract class SystemsManager extends OpMode {
         claw.telemetry(telemetry);
     }
 
-    protected void updateMotor(final int controllerNum) {
+    /* Updates drivetrain state based on joystick movement. Uses tank drive controls. */
+    protected void updateMotorTank(final int controllerNum) {
         double left, right;
 
         // controllerNum determines the gamepad that controls the robot
@@ -74,33 +75,21 @@ public abstract class SystemsManager extends OpMode {
                 // Move left/right wheels based on left/right stick movement
                 left = gamepad1.left_stick_y;
                 right = gamepad1.right_stick_y;
-                // Snap turn
-                if (!pBumperLeft && gamepad1.left_bumper) {
-                    drive.moveInches(10.2, -10.2);
-                }
-                if (!pBumperRight && gamepad1.right_bumper) {
-                    drive.moveInches(-10.3, 10.3);
-                }
-                pBumperLeft = gamepad1.left_bumper;
-                pBumperRight = gamepad1.right_bumper;
                 break;
             case 2:
                 // Move left/right wheels based on left/right stick movement
                 left = gamepad2.left_stick_y;
                 right = gamepad2.right_stick_y;
-                // Snap turn
-
                 break;
             default:
                 left = 0;
                 right = 0;
         }
         drive.setMoveVelocity(left, right);
-        drive.update();
         drive.telemetry(telemetry);
     }
 
-    /* Garbage quick fix code that adds arcade drive to the drivetrain */
+    /* Updates drivetrain state based on joystick movement. Uses arcade drive controls. */
     protected void updateMotorArcade(final int controllerNum) {
         // turn is positive if intention is to turn right
         double forward, turn;
@@ -122,7 +111,6 @@ public abstract class SystemsManager extends OpMode {
                 turn = 0;
         }
         drive.setMoveVelocity(forward - turn, forward + turn);
-        drive.update();
         drive.telemetry(telemetry);
     }
 }
