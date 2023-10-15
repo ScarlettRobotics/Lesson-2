@@ -6,7 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class ClawCore {
     /* Initialization */
-    /** Initialization is done within ClawCore for ease of access */
+    /** Initialization is done within ClawCore for ease of access. */
     protected Servo leftClaw;
     protected Servo rightClaw;
     private boolean clawIsOpen = false;
